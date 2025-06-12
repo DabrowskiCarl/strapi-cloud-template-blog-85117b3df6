@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "szkolenie_leads",
+  "info": {
+    "singularName": "szkolenie-lead",
+    "pluralName": "szkolenie-leads",
+    "displayName": "SzkolenieLead"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "message": {
+      "type": "text"
+    }
+  }
+}

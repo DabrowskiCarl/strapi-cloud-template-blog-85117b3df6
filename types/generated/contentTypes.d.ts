@@ -538,6 +538,38 @@ export interface ApiGlobalGlobal extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiSzkolenieLeadSzkolenieLead
+  extends Struct.CollectionTypeSchema {
+  collectionName: 'szkolenie_leads';
+  info: {
+    displayName: 'SzkolenieLead';
+    pluralName: 'szkolenie-leads';
+    singularName: 'szkolenie-lead';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    email: Schema.Attribute.Email;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::szkolenie-lead.szkolenie-lead'
+    > &
+      Schema.Attribute.Private;
+    message: Schema.Attribute.Text;
+    name: Schema.Attribute.String;
+    phone: Schema.Attribute.String;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiTransformacjaTransformacja
   extends Struct.CollectionTypeSchema {
   collectionName: 'transformacjas';
@@ -1086,6 +1118,7 @@ declare module '@strapi/strapi' {
       'api::author.author': ApiAuthorAuthor;
       'api::category.category': ApiCategoryCategory;
       'api::global.global': ApiGlobalGlobal;
+      'api::szkolenie-lead.szkolenie-lead': ApiSzkolenieLeadSzkolenieLead;
       'api::transformacja.transformacja': ApiTransformacjaTransformacja;
       'plugin::content-releases.release': PluginContentReleasesRelease;
       'plugin::content-releases.release-action': PluginContentReleasesReleaseAction;
