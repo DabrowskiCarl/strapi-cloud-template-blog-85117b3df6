@@ -22,6 +22,9 @@
     },
     "message": {
       "type": "text"
+    },
+    "website": {
+      "type": "string"
     }
   }
 }
