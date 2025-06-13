@@ -6,16 +6,11 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::article.article', ({ strapi }) =>  ({
   async find(ctx) {
-    // Bezpieczna, uproszczona logika do testowania
+    // Prosta i uniwersalna metoda populacji dla dynamicznej strefy
     ctx.query.populate = {
-      cover: true, // Dołączamy obraz okładki
+      cover: true,
       blocks: {
-        // Na razie próbujemy populować tylko komponent slidera
-        on: {
-          'shared.slider': {
-            populate: 'files'
-          }
-        }
+        populate: '*' // Kluczowa zmiana: populujemy wszystkie komponenty w 'blocks'
       }
     };
     
@@ -24,15 +19,11 @@ module.exports = createCoreController('api::article.article', ({ strapi }) =>  (
   },
 
   async findOne(ctx) {
-    // Ta sama bezpieczna logika dla pojedynczego artykułu
+    // Ta sama prosta logika dla pojedynczego artykułu
     ctx.query.populate = {
       cover: true,
       blocks: {
-        on: {
-          'shared.slider': {
-            populate: 'files'
-          }
-        }
+        populate: '*' // Kluczowa zmiana: populujemy wszystkie komponenty w 'blocks'
       }
     };
     
