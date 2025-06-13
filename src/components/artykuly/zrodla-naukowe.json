@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_artykuly_zrodla_naukowes",
+  "info": {
+    "displayName": "ZrodlaNaukowe",
+    "icon": "cursor"
+  },
+  "options": {},
+  "attributes": {
+    "TytulZrodla": {
+      "type": "string"
+    },
+    "URL": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

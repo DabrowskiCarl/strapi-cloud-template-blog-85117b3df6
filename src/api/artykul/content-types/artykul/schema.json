@@ -44,6 +44,16 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::autor.autor"
+    },
+    "DaneSEO": {
+      "type": "component",
+      "component": "shared.seo",
+      "repeatable": false
+    },
+    "Zrodla": {
+      "type": "component",
+      "component": "artykuly.zrodla-naukowe",
+      "repeatable": true
     }
   }
 }

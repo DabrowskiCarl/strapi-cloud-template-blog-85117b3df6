@@ -1,5 +1,17 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface ArtykulyZrodlaNaukowe extends Struct.ComponentSchema {
+  collectionName: 'components_artykuly_zrodla_naukowes';
+  info: {
+    displayName: 'ZrodlaNaukowe';
+    icon: 'cursor';
+  };
+  attributes: {
+    TytulZrodla: Schema.Attribute.String;
+    URL: Schema.Attribute.String;
+  };
+}
+
 export interface SharedMedia extends Struct.ComponentSchema {
   collectionName: 'components_shared_media';
   info: {
@@ -46,7 +58,6 @@ export interface SharedSeo extends Struct.ComponentSchema {
   attributes: {
     metaDescription: Schema.Attribute.Text & Schema.Attribute.Required;
     metaTitle: Schema.Attribute.String & Schema.Attribute.Required;
-    shareImage: Schema.Attribute.Media<'images'>;
   };
 }
 
@@ -65,6 +76,7 @@ export interface SharedSlider extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'artykuly.zrodla-naukowe': ArtykulyZrodlaNaukowe;
       'shared.media': SharedMedia;
       'shared.quote': SharedQuote;
       'shared.rich-text': SharedRichText;

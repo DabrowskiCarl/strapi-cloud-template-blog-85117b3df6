@@ -417,6 +417,7 @@ export interface ApiArtykulArtykul extends Struct.CollectionTypeSchema {
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
+    DaneSEO: Schema.Attribute.Component<'shared.seo', false>;
     DataPublikacji: Schema.Attribute.Date & Schema.Attribute.Required;
     Hero: Schema.Attribute.Media<'images' | 'files' | 'videos' | 'audios'>;
     locale: Schema.Attribute.String & Schema.Attribute.Private;
@@ -433,6 +434,7 @@ export interface ApiArtykulArtykul extends Struct.CollectionTypeSchema {
     updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     Zajawka: Schema.Attribute.Text;
+    Zrodla: Schema.Attribute.Component<'artykuly.zrodla-naukowe', true>;
   };
 }
 
