@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "kategorie",
+  "info": {
+    "singularName": "kategoria",
+    "pluralName": "kategorie",
+    "displayName": "Kategoria"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Nazwa": {
+      "type": "string",
+      "required": true
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Nazwa"
+    }
+  }
+}

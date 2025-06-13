@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "artykuly",
+  "info": {
+    "singularName": "artykul",
+    "pluralName": "artykuly",
+    "displayName": "Artykuł"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Tytul": {
+      "type": "string",
+      "required": true
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Tytul",
+      "required": true
+    },
+    "DataPublikacji": {
+      "type": "date",
+      "required": true
+    },
+    "Zajawka": {
+      "type": "text"
+    },
+    "Hero": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Main": {
+      "type": "blocks"
+    },
+    "autor": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::autor.autor"
+    }
+  }
+}
