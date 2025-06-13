@@ -7,7 +7,18 @@ const { createCoreController } = require('@strapi/strapi').factories;
 module.exports = createCoreController('api::article.article', ({ strapi }) =>  ({
   async find(ctx) {
     // some custom logic here
-    ctx.query = { ...ctx.query, populate: 'deep' };
+    ctx.query = { 
+      ...ctx.query, 
+      populate: {
+        blocks: {
+          populate: {
+            files: {
+              populate: true
+            }
+          }
+        }
+      } 
+    };
     
     // Calling the default core action
     const { data, meta } = await super.find(ctx);
@@ -17,7 +28,18 @@ module.exports = createCoreController('api::article.article', ({ strapi }) =>  (
   },
 
   async findOne(ctx) {
-    ctx.query = { ...ctx.query, populate: 'deep' };
+    ctx.query = { 
+      ...ctx.query, 
+      populate: {
+        blocks: {
+          populate: {
+            files: {
+              populate: true
+            }
+          }
+        }
+      } 
+    };
     
     // Calling the default core action
     const { data, meta } = await super.findOne(ctx);
@@ -26,4 +48,3 @@ module.exports = createCoreController('api::article.article', ({ strapi }) =>  (
     return { data, meta };
   }
 }));
-
