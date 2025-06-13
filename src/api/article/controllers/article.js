@@ -6,45 +6,40 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::article.article', ({ strapi }) =>  ({
   async find(ctx) {
-    // some custom logic here
-    ctx.query = { 
-      ...ctx.query, 
-      populate: {
-        blocks: {
-          populate: {
-            files: {
-              populate: true
-            }
-          }
+    // Poprawiona, bardziej precyzyjna logika populacji
+    ctx.query.populate = {
+      cover: true, // Dołączamy obraz okładki
+      blocks: {
+        // Używamy 'on', aby sprecyzować populację dla konkretnych komponentów
+        on: {
+          'shared.slider': { populate: 'files' },
+          'shared.media': { populate: 'media' },
+          'shared.quote': true,
+          'shared.rich-text': true
+          // Upewnij się, że nazwy komponentów (np. 'shared.slider') są poprawne
         }
-      } 
+      }
     };
     
-    // Calling the default core action
     const { data, meta } = await super.find(ctx);
-
-    // some more custom logic
     return { data, meta };
   },
 
   async findOne(ctx) {
-    ctx.query = { 
-      ...ctx.query, 
-      populate: {
-        blocks: {
-          populate: {
-            files: {
-              populate: true
-            }
-          }
+    // Ta sama precyzyjna logika dla pojedynczego artykułu
+    ctx.query.populate = {
+      cover: true,
+      blocks: {
+        on: {
+          'shared.slider': { populate: 'files' },
+          'shared.media': { populate: 'media' },
+          'shared.quote': true,
+          'shared.rich-text': true
         }
-      } 
+      }
     };
     
-    // Calling the default core action
     const { data, meta } = await super.findOne(ctx);
-
-    // some more custom logic
     return { data, meta };
   }
 }));
